@@ -1,11 +1,15 @@
-// Code your testbench here
-// or browse Examples
-
+// Created by Surya Atchyuth, Veerubhotla
 class primeGen;
   randc bit [6:0]num;
+  int UL, LL;
+  
+  function new(int L1, int L2);
+    LL=L1;
+    UL=L2;
+  endfunction
   
   constraint range{
-                   num>1  && num<100;
+                   num>=LL  && num<=UL;
                    num==2 || num%2!=0;
                    num==3 || num%3!=0;
                    num==5 || num%5!=0;
@@ -15,8 +19,10 @@ endclass
 
 
 module prime;
-  primeGen pv=new();
-  int range =100/$ln(100);
+  int LL=1, UL=100;   //range
+  
+  primeGen pv=new(LL,UL);
+  int range = UL/$ln(UL);
   int result[$];
   
   initial begin
