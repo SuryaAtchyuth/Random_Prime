@@ -26,7 +26,7 @@ module prime;
   int result[$];
   
   initial begin
-    repeat (range+3) begin
+    repeat (range) begin
         pv.randomize();
         result.push_back(pv.num);
     end
